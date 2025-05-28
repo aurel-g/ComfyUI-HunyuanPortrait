@@ -38,3 +38,22 @@ class LoadHunyuanPortraitVideo:
         video = image_path
         return (video,)
 
+
+class LoadHunyuanPortraitConfig:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "config_path": ("STRING", {"default": "config/hunyuan-portrait.yaml"}),
+            }
+        }
+
+    RETURN_TYPES = ("CONFIG",)
+    RETURN_NAMES = ("config",)
+    FUNCTION = "input_config"
+    CATEGORY = "HunyuanPortrait"
+
+    def input_config(self, config_path):
+        config = config_path
+        return (config,)
+
