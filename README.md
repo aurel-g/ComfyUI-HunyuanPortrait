@@ -28,7 +28,9 @@ pip install -r requirements.txt
 
 
 ## 📜 Requirements
+
 * An NVIDIA 3090 GPU with CUDA support is required. 
   * The model is tested on a single 24G GPU.
+ 
 * Tested operating system: Linux
 
