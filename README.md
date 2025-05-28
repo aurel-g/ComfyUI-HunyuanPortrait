@@ -25,6 +25,8 @@ pip install -r requirements.txt
 
 ### Download pretrained checkpoint
 
+All the weights should be placed under the `ComfyUI/models/HunyuanPortrait/pretrained_weights` direcotry. You can download weights manually as follows:
+
 All models are stored in `pretrained_weights` by default:
 ```bash
 pip install "huggingface_hub[cli]"
