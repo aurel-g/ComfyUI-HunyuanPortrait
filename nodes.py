@@ -20,14 +20,15 @@ from src.models.dinov2.models.vision_transformer import vit_large, ImageProjecto
 
 
 @torch.no_grad()
-def main(cfg, args):
+def main(image, video, cfg):
     output_dir = f"{cfg.output_dir}"
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    video_path = args.video_path
-    image_path = args.image_path
+    video_path = image
+    image_path = video
+    
     image_name = os.path.splitext(os.path.basename(image_path))[0]
     video_name = os.path.splitext(os.path.basename(video_path))[0]
 
@@ -322,16 +323,20 @@ class HunyuanPortrait:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "config_path": ("STRING", {"default": "config/hunyuan-portrait.yaml"}),
+                "image": ("IMAGE",),
+                "video": ("VIDEO",),
+                "config": ("CONFIG",),
             }
         }
 
-    RETURN_TYPES = ("CONFIG",)
-    RETURN_NAMES = ("config",)
-    FUNCTION = "input_config"
+    RETURN_TYPES = ()
+    FUNCTION = "generate"
     CATEGORY = "HunyuanPortrait"
 
-    def input_config(self, config_path):
-        config = config_path
-        return (config,)
+    def generate(self, image, video, config):
+        cfg = OmegaConf.load(config)
+        
+        main(image, video, cfg)
+        
+        return ()
 
