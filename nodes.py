@@ -20,7 +20,7 @@ from src.models.dinov2.models.vision_transformer import vit_large, ImageProjecto
 
 
 @torch.no_grad()
-def main(image, video, cfg):
+def main(image, video, height, width, seed, num_inference_steps, cfg):
     output_dir = f"{cfg.output_dir}"
 
     if not os.path.exists(output_dir):
@@ -36,8 +36,8 @@ def main(image, video, cfg):
     save_video_path = os.path.join(output_dir, f'{image_name}_{video_name}_{timestamp}.mp4')
     print(f"Generating and writing to: {save_video_path}")
 
-    if cfg.seed is not None:
-        seed_everything(cfg.seed)
+    if seed is not None:
+        seed_everything(seed)
 
     vae = AutoencoderKLTemporalDecoder.from_pretrained(
         cfg.pretrained_model_name_or_path, 
@@ -236,8 +236,8 @@ def main(image, video, cfg):
         pose_cond_tensor_all,
         driven_feat_all,
         uncond_driven_feat_all,
-        height=cfg.height,
-        width=cfg.width,
+        height=height,
+        width=width,
         num_frames=num_frames_all,
         decode_chunk_size=cfg.decode_chunk_size,
         motion_bucket_id=cfg.motion_bucket_id,
@@ -250,7 +250,7 @@ def main(image, video, cfg):
         overlap=cfg.overlap,
         shift_offset=cfg.shift_offset,
         frames_per_batch=cfg.n_sample_frames,
-        num_inference_steps=cfg.num_inference_steps,
+        num_inference_steps=num_inference_steps,
         i2i_noise_strength=cfg.i2i_noise_strength,
         arcface_embeddings=arcface_embeddings,
     ).frames
