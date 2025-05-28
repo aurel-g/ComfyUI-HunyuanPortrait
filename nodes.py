@@ -326,6 +326,10 @@ class HunyuanPortrait:
                 "image": ("IMAGE",),
                 "video": ("VIDEO",),
                 "config": ("CONFIG",),
+                "width": ("INT", {"default": 512}),
+                "height": ("INT", {"default": 512}),
+                "seed": ("INT", {"default": 72580}),
+                "num_inference_steps": ("INT", {"default": 25}),
             }
         }
 
@@ -333,10 +337,10 @@ class HunyuanPortrait:
     FUNCTION = "generate"
     CATEGORY = "HunyuanPortrait"
 
-    def generate(self, image, video, config):
-        cfg = OmegaConf.load(config)
+    def generate(self, image, video, height, width, seed, num_inference_steps, config):
         
-        main(image, video, cfg)
+        cfg = OmegaConf.load(config)
+        main(image, video, height, width, seed, num_inference_steps, cfg)
         
         return ()
 
