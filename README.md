@@ -16,6 +16,7 @@ git clone https://github.com/Yuan-ManX/ComfyUI-HunyuanPortrait.git
 3. Install dependencies:
 ```
 cd ComfyUI-HunyuanPortrait
+pip install torch torchvision torchaudio
 pip install -r requirements.txt
 ```
 
@@ -23,3 +24,11 @@ pip install -r requirements.txt
 ## Model
 
 ### Download pretrained checkpoint
+
+
+
+## 📜 Requirements
+* An NVIDIA 3090 GPU with CUDA support is required. 
+  * The model is tested on a single 24G GPU.
+* Tested operating system: Linux
+
