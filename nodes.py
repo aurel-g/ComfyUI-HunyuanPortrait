@@ -8,15 +8,15 @@ from diffusers import AutoencoderKLTemporalDecoder
 from moviepy.editor import VideoFileClip
 from einops import rearrange
 from datetime import datetime
-from src.dataset.test_preprocess import preprocess
-from src.dataset.utils import save_videos_grid, seed_everything, get_head_exp_motion_bucketid
-from src.schedulers.scheduling_euler_discrete import EulerDiscreteScheduler
-from src.pipelines.hunyuan_svd_pipeline import HunyuanLongSVDPipeline
-from src.models.condition.unet_3d_svd_condition_ip import UNet3DConditionSVDModel, init_ip_adapters
-from src.models.condition.coarse_motion import HeadExpression, HeadPose
-from src.models.condition.refine_motion import IntensityAwareMotionRefiner
-from src.models.condition.pose_guider import PoseGuider
-from src.models.dinov2.models.vision_transformer import vit_large, ImageProjector
+from .src.dataset.test_preprocess import preprocess
+from .src.dataset.utils import save_videos_grid, seed_everything, get_head_exp_motion_bucketid
+from .src.schedulers.scheduling_euler_discrete import EulerDiscreteScheduler
+from .src.pipelines.hunyuan_svd_pipeline import HunyuanLongSVDPipeline
+from .src.models.condition.unet_3d_svd_condition_ip import UNet3DConditionSVDModel, init_ip_adapters
+from .src.models.condition.coarse_motion import HeadExpression, HeadPose
+from .src.models.condition.refine_motion import IntensityAwareMotionRefiner
+from .src.models.condition.pose_guider import PoseGuider
+from .src.models.dinov2.models.vision_transformer import vit_large, ImageProjector
 
 
 @torch.no_grad()

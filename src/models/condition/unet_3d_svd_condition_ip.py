@@ -12,8 +12,8 @@ from diffusers.models.attention_processor import CROSS_ATTENTION_PROCESSORS, Att
 
 from diffusers.models.embeddings import TimestepEmbedding, Timesteps
 from diffusers.models.modeling_utils import ModelMixin
-from src.models.condition.unet_3d_blocks import UNetMidBlockSpatioTemporal, get_down_block, get_up_block
-from src.models.condition.attention_processor import AttnProcessor2_0, AttnProcessor, IPAdapterAttnProcessor2_0, IPAdapterAttnProcessor
+from .unet_3d_blocks import UNetMidBlockSpatioTemporal, get_down_block, get_up_block
+from .attention_processor import AttnProcessor2_0, AttnProcessor, IPAdapterAttnProcessor2_0, IPAdapterAttnProcessor
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 

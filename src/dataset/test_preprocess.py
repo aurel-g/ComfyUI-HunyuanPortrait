@@ -6,7 +6,7 @@ import torch
 import torchvision.transforms as transforms
 import decord
 import tqdm
-from src.dataset.utils import YoloFace
+from .utils import YoloFace
 
 
 def align_face(image, landmark, output_shape=(112, 112)):
